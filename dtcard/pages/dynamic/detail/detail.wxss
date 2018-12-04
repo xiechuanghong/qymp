@@ -1,0 +1,424 @@
+/* pages/dynamic/detail/detail.wxss */
+
+page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+}
+
+.item {
+  padding: 32rpx;
+  display: flex;
+  /* margin: 16rpx 0; */
+  background: #fff;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 0 rgba(253,222,123,0.8);
+}
+
+.item .user-tx {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 16rpx;
+  border-radius: 8rpx;
+}
+
+.item .nesw-detail {
+  flex: 1;
+  /* background-color: #ccc; */
+  overflow: hidden;
+}
+
+.user-info {
+  position: relative;
+}
+
+.user-info .name {
+  font-family: PingFangSC-Medium;
+  font-size: 15px;
+  color: #576b94;
+}
+
+.user-info .post, .user-info .time {
+  font-size: 12px;
+  color: #8b9199;
+}
+
+.user-info .time {
+  position: absolute;
+  top: 24rpx;
+  right: 0;
+}
+
+.news-cont {
+  padding: 16rpx 0;
+}
+
+.type {
+  display: flex;
+  padding: 16rpx 0;
+  justify-content: space-between;
+}
+
+.type view {
+  /* padding: 12rpx 28rpx 12rpx 32rpx; */
+  border: 1px solid #f2f2f2;
+  border-radius: 8rpx;
+  width: 168rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* line-height: 72rpx; */
+  box-sizing: border-box;
+}
+
+.type image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.type text {
+  vertical-align: middle;
+}
+
+.type .active {
+  color: #f4582c;
+}
+
+.like-member {
+  line-height: 40rpx;
+  background-color: #f2f2f2;
+  padding: 6rpx 16rpx;
+  position: relative;
+}
+
+.like-member .good {
+  width: 24rpx;
+  height: 26rpx;
+  margin-right: 12.4rpx;
+  position: absolute;
+  top: 14rpx;
+}
+
+.like-member .text {
+  /* display: inline-block; */
+  word-wrap: break-word;
+  text-indent: 36rpx;
+  color: #576b94;
+}
+
+.like-member .text image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 4rpx;
+}
+
+.like-member .text image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.like-member .sanjiao_down {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #f2f2f2;
+  position: absolute;
+  left: 40rpx;
+  top: -10rpx;
+}
+
+.link {
+  padding: 10rpx;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+}
+
+.link image {
+  width: 88rpx;
+  height: 88rpx;
+  margin-right: 12rpx;
+}
+
+.link .text {
+  flex: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: #000;
+  font-size: 15px;
+  line-height: 42rpx;
+  overflow: hidden;
+}
+
+.news-text {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #060f38;
+  line-height: 40rpx;
+}
+
+.news-img {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+}
+
+.news-img image {
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.news-text-img .news-text {
+  margin-bottom: 16rpx;
+}
+
+/* 动态详情点赞 */
+
+.tab-h {
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.06);
+}
+
+.tab-item.active {
+  font-size: 14px;
+}
+
+.help-list .item {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 16rpx 32rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.06);
+}
+
+.help-list .item image {
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 16rpx;
+  border-radius: 8rpx;
+}
+
+.help-list .item .text {
+  flex: 1;
+  color: #576b94;
+}
+
+/* 动态详情评论 */
+
+.comment .list {
+  background-color: #fff;
+}
+
+.comment .list .item {
+  margin: 0;
+  padding: 32rpx;
+  display: flex;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.comment .list .item .user-tx {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 8rpx;
+  margin-right: 16rpx;
+}
+
+.comment .list .item .message-detail {
+  flex: 1;
+  /* overflow: hidden; */
+}
+
+.comment .list .message-detail .user-name {
+  font-size: 14px;
+  color: #576b94;
+  padding: 12rpx 0;
+  position: relative;
+}
+
+.comment .list .user-name .more {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.comment .list .user-name image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.comment .list .message-detail .message-cont {
+  margin: 16rpx 0;
+  line-height: 40rpx;
+  font-size: 14px;
+  color: #060f38;
+  word-wrap: break-word;
+}
+
+.comment .list .message-detail .time {
+  font-size: 12px;
+  color: #8b9199;
+}
+
+.comment .set-top {
+  position: absolute;
+  bottom: -76rpx;
+  right: -20rpx;
+  z-index: 30;
+  width: 140rpx;
+  height: 60rpx;
+  background-color: #5f677a;
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #fff;
+  font-size: 14px;
+}
+
+.comment .item-box {
+  position: relative;
+}
+
+.comment .sanjiao_down {
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 10px solid #5f677a;
+  position: absolute;
+  right: 20rpx;
+  top: -10rpx;
+}
+
+.comment .ptn-fixed {
+  position: fixed;
+  bottom: 0;
+  /* padding: 14rpx 0; */
+  z-index: 100;
+  width: 100%;
+  overflow: hidden;
+  background: #fafafa;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.06);
+}
+
+.comment .ptn-fixed .pad {
+  padding: 0 32rpx;
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+}
+
+.comment .ptn-fixed input {
+  flex: 1;
+  background: #feffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 72rpx;
+  box-sizing: border-box;
+  padding: 0 10rpx;
+}
+
+.comment .ptn-fixed image {
+  width: 88rpx;
+  height: 88rpx;
+  margin: 0 16rpx;
+}
+
+.comment .ptn-fixed .send {
+  padding: 16rpx 32rpx;
+  border: 1px solid #c2c4c9;
+  border-radius: 8rpx;
+}
+
+.comment .ptn-fixed .active {
+  background: rgb(34, 206, 34);
+  color: #fff;
+  border-style: #fff;
+}
+
+.comment .ptn {
+  height: 100rpx;
+}
+
+.not-list {
+  width: 200rpx;
+  margin: 80rpx 0;
+  /* margin-top: 80rpx; */
+}
+
+/* 跳转过来的单独样式 */
+
+.details-title {
+  font-family: PingFangSC-Medium;
+  font-size: 18px;
+  color: #060f38;
+  letter-spacing: 0;
+}
+
+.details-time {
+  margin: 26rpx 0;
+}
+
+.details-user-name {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #576b94;
+  letter-spacing: 0;
+  margin-right: 32rpx;
+}
+
+.details-fs-time {
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #8b9199;
+  letter-spacing: 0;
+}
+
+.share-nav {
+  padding: 16rpx 32rpx;
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  align-items: center;
+  box-shadow: 0 8rpx 32rpx 0 rgba(0,0,0,0.12);
+  position: relative;
+  z-index: 20;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info .user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 16rpx;
+}
+
+.user-info .user-name {
+  font-family: PingFangSC-Medium;
+  font-size: 20px;
+  color: #2c364c;
+  margin-bottom: 16rpx;
+}
+
+.user-info .user-position {
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #060f38;
+}
+
+.share-nav .nav {
+  vertical-align: middle;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #108ee9;
+}
+
+.mgn {
+  margin: 16rpx 0;
+}

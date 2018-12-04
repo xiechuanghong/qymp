@@ -1,0 +1,155 @@
+/**app.wxss**/
+@import "/utils/animate.wxss";
+@import "/utils/wxParse/wxParse.wxss";
+
+
+
+page {
+  font-size: 14px;
+  font-family: PingFangSC-Regular;
+}
+
+image {
+  vertical-align: middle;
+}
+
+/* 咨询样式 */
+
+.float-button {
+  width: 136rpx;
+  height: 136rpx;
+  margin-top: 1.6vm;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: fixed;
+  right: 16rpx;
+  bottom: 20rpx;
+  z-index: 99;
+}
+
+.float-button-badge {
+  position: absolute;
+  width: 24rpx;
+  height: 24rpx;
+  background: #f15050;
+  border-radius: 12rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14rpx;
+  margin-left: -26rpx;
+  z-index: 2;
+}
+
+.float-button-badge-number {
+  font-size: 22rpx;
+  font-family: PingFangSC-Medium;
+  color: #fff;
+  z-index: 1;
+}
+
+.float-button-image {
+  position: absolute;
+  width: 136rpx;
+  height: 136rpx;
+}
+
+/* tab切换样式 */
+
+.tab-h {
+  /* width: 100%;
+  white-space: nowrap;
+  overflow: hidden; */
+
+  background-color: #fff;
+  box-sizing: border-box;
+  line-height: 96rpx;
+  padding-left: 16rpx;
+  display: flex;
+  align-items: center;
+}
+
+.tab-item {
+  color: #5f677a;
+  margin: 0 32rpx;
+  transition: all 0.25s;
+  border-bottom: 6rpx solid transparent;
+}
+
+.tab-item.active {
+  font-size: 16px;
+  color: #0084ff;
+  position: relative;
+  font-family: PingFangSC-Medium;
+  border-bottom: 6rpx solid #0084ff;
+  border-radius: 3rpx;
+}
+/* 
+.tab-item.active:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 6rpx;
+  background: #0084ff;
+  position: absolute;
+  bottom: 0;
+  border-radius: 3rpx;
+} */
+
+/* .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} */
+
+/* 数据列表加载没有更多了 */
+
+.period {
+  padding: 48rpx 0 64rpx;
+  text-align: center;
+  font-size: 12px;
+  color: #8b9199;
+  background-color: #f2f2f2;
+}
+
+.period-text {
+  position: relative;
+}
+
+.period-text::after {
+  content: '';
+  width: 204rpx;
+  height: 2rpx;
+  background: #ebebeb;
+  position: absolute;
+  left: 80rpx;
+  top: 16rpx;
+}
+
+.period-text::before {
+  content: '';
+  width: 204rpx;
+  height: 2rpx;
+  background: #ebebeb;
+  position: absolute;
+  right: 80rpx;
+  top: 16rpx;
+}
+
+button::after {
+  border: none;
+}
+
+button {
+ background-color: #fff;
+ display: inline;
+ padding: 0;
+ line-height: 0;
+ margin: 0;
+ font-size: 14px;
+}

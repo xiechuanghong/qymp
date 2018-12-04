@@ -1,0 +1,38 @@
+<view class='cont'>
+  <view class='all'>533人点赞</view>
+  <view class='list'>
+    <view class='item' wx:for="{{messageArr}}" wx:key="">
+      <image wx:if="{{item.img}}" class='user-tx' src='{{item.img}}'></image>
+      <image wx:else class='user-tx' src='/img/img02.png'></image>
+      <view class='message-detail'>
+        <view class='user-name'>
+          <text>{{item.name}}</text>
+          <view wx:if="{{item.isDel}}" class='more' data-index="{{index}}" bindtap='isShowDel'>
+            <image src='/img/ic_more_bggray_m.png'></image>
+            <view bindtap='delElement' data-id="{{index}}" class='set-top animated zoomIn' wx:if="{{setTop === index}}">删除
+              <view class='sanjiao_down'></view>
+            </view>
+          </view>
+        </view>
+        <view class='message-cont'>{{item.messageText}}</view>
+        <view class='time'>59分钟前</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 没有更多了~ -->
+  <view wx:if="{{true}}" class='period'>
+    <view class='period-text'>没有更多了</view>
+  </view>
+
+  <view class='ptn'></view>
+
+  <view class='ptn-fixed'>
+    <view class='pad'>
+      <input placeholder="" value="{{value}}" bindinput="getInputVal" bindconfirm="send" confirm-type="send" cursor-spacing ='10' />
+      <image src='/img/ic_chat_moj_gray_nor.png'></image>
+      <view bindtap='send' class="send {{value?'active':''}}">发送</view>
+    </view>
+  </view>
+
+</view>

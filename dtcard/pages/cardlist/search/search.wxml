@@ -1,0 +1,45 @@
+<view class='fl'>
+  <view class='ptn-rel'>
+    <input value='{{flValue}}' placeholder="搜索员工名片" maxlength="10" bindconfirm="search" confirm-type="search" auto-focus='true' />
+    <image bindtap='search' class='se' src='/img/ic_search_gray_m.png'></image>
+    <text bindtap='cancel'>取消</text>
+  </view>
+</view>
+<view class='cont'>
+  <view class='' wx:if="{{searchData.Data.length != 0 && searchData.Page.TotalItemCount > 0}}">
+    <view class="cont-text">员工名片列表 ( {{searchData.Page.TotalItemCount}} )</view>
+    <view class='card-list'>
+      <view class="item" wx:for="{{searchData.Data}}" wx:key="" data-id="{{item.CardID}}" catchtap='card_detail'>
+        <view class='box'>
+          <image class='user-img' src='{{item.Avatar}}'></image>
+          <view class='user-info'>
+            <view class='user-name'>
+              <view class=''>
+                {{item.Name}}
+                <text>{{item.Position}}</text>
+              </view>
+              <image src='{{item.Logo}}'></image>
+            </view>
+            <view class='tel'>
+              <image src='/img/ic_phone_line_black_m.png'></image>
+              <text>{{item.Mobile}}</text>
+            </view>
+            <view class='email'>
+              <image src='/img/ic_email_line_black_m.png'></image>
+              <text>{{item.Email}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style='text-align:center;width:100%' wx:if="{{searchData.Page.TotalItemCount == 0}}">
+    <image class='no-img' mode="widthFix" src='/img/img_search_nodata.png'></image>
+  </view>
+  <view wx:if="{{searchData.Page.PageNumber == searchData.Page.PageCount && searchData.Page.TotalItemCount > 0}}" class='period'>
+    <view class='period-text'>没有更多了</view>
+  </view>
+  <!-- <view wx:if="{{noSearch}}" style='text-align:center'>
+    <image style='width:192rpx;height:296rpx;' src='/img/img_search_nodata.png'></image>
+  </view> -->
+</view>

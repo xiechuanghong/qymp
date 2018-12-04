@@ -1,0 +1,104 @@
+<!--pages/shop/shop.wxml-->
+<!-- <block wx:if="{{isInputShow}}"> -->
+<view class='top-logo'>
+  <image class='logo' src='{{enterpriseInfo.Logo}}'></image>
+  <view class='top-text'>
+    <view class='text'>{{enterpriseInfo.Name}}</view>
+    <image src='/img/img_mark_vipcompany.png'></image>
+  </view>
+</view>
+
+<view class='ptn-fixed {{fixednav?"fixednav":""}}'>
+  <view class="search" bindtap='choice'>
+    <input placeholder="搜索" disabled="disabled" />
+    <image src='/img/ic_search_gray_m.png'></image>
+  </view>
+  <view class='dis-flex'>
+    <view class='shop-cart-box'>
+      <image src='/img/ic_store_shoppingcar_orange_m.png'></image>
+    </view>
+    <view class='text'>12</view>
+    <image src='/img/ic_store_profile_cyan_m.png'></image>
+    <image src='/img/ic_store_share_blue_m.png'></image>
+  </view>
+
+</view>
+
+<!-- <scroll-view scroll-x class="tab-h {{fixednav?'tab-h-nav':''}}" scroll-left="{{scrollLeft}}">
+    <view wx:for="{{productKindsList}}" wx:key="" class="tab-item {{currentTab==index?'active':''}}" data-id="{{item.KindID}}" data-current="{{index}}" bindtap="swichNav">{{item.Name}}</view>
+  </scroll-view> -->
+
+<view class="tab-h {{fixednav?'tab-h-nav':''}}">
+  <view wx:for="{{productKindsList}}" wx:key="" class="tab-item {{currentTab==index?'active':''}}" data-id="{{item.KindID}}" data-current="{{index}}" bindtap="swichNav">{{item.Name}}</view>
+</view>
+
+<block wx:if="{{productsList.length==0}}">
+  <view class='' style='text-align:center;margin-top:160rpx;'>
+    <image mode='widthFix' class='not-goods' src='/img/img_placeholder_nodata_store.png'></image>
+  </view>
+</block>
+
+<block wx:if="{{productsList.length>0}}">
+  <view class="item-box {{fixednav?'mgn-top':''}}">
+    <view class='item' wx:for="{{productsList}}" data-id="{{item.ProductID}}" wx:key="" bindtap='goodsDetail'>
+      <view class='box-img'>
+        <image wx:if="{{item.Image}}" class='goods-img' src='{{item.Image}}'></image>
+        <image wx:else class='goods-img' style='width:96rpx;height:70rpx;' src='/img/img_placeholder_normal.png'></image>
+      </view>
+      <view class='goods-detail'>
+        <text class='depict'>{{item.Name}}</text>
+        <view class='add-goods'>
+          <view class='price'>
+            <text>￥</text>{{item.Price}}
+          </view>
+          <image src='/img/ic_addshoppingcar_yellow_s.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 没有更多了~ -->
+  <view wx:if="{{!isPeriod}}" class='period'>
+    <view class='period-text'>没有更多了</view>
+  </view>
+
+</block>
+
+
+<navigator url='/pages/chat/chat' hover-class="none">
+  <view class='float-button'>
+    <view class='float-button-badge'>
+      <!-- <text class='float-button-badge-number'>1</text> -->
+    </view>
+    <image class='float-button-image' mode='aspectFit' src="../../img/ic_floatingactionbutton_contant.png"></image>
+  </view>
+</navigator>
+
+<!-- </block> -->
+
+<block wx:if="{{!isInputShow}}">
+  <view class='ptn-re'>
+    <view class='fl'>
+      <input value='{{flValue}}' placeholder="搜索商品" maxlength="10" bindconfirm="search" confirm-type="search" auto-focus='true' />
+      <image bindtap='search' class='se' src='/img/ic_search_gray_m.png'></image>
+      <text bindtap='cancel'>取消</text>
+    </view>
+    <view class="item-box {{resultArr.length == 0 ?'clear-top':''}}">
+      <view class='item' wx:for="{{resultArr}}" wx:key="" bindtap='goodsDetail'>
+        <image class='goods-img' src='{{item.img}}'></image>
+        <view class='goods-detail'>
+          <text class='depict'>{{item.text}}</text>
+          <view class='add-goods'>
+            <view class='price'>
+              <text>￥</text>{{item.price}}
+            </view>
+            <image src='/img/ic_addshoppingcar_yellow_s.png'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{noMore}}" class='period'>
+      <view class='period-text'>没有更多了</view>
+    </view>
+  </view>
+</block>

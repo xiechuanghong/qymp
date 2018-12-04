@@ -1,0 +1,145 @@
+/* pages/message/message.wxss */
+page {
+  background-color: #f2f2f2;
+}
+
+.all {
+  height: 64rpx;
+  line-height: 64rpx;
+  background-color: #f2f2f2;
+  padding-left: 32rpx;
+  color: #3d4958;
+}
+
+.list {
+  background-color: #fff;
+}
+
+.list .item {
+  padding: 32rpx;
+  display: flex;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.list .item .user-tx {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 8rpx;
+  margin-right: 16rpx;
+}
+
+.list .item .message-detail {
+  flex: 1;
+  /* overflow: hidden; */
+}
+
+.list .message-detail .user-name {
+  font-size: 14px;
+  color: #576b94;
+  padding: 12rpx 0;
+  position: relative;
+}
+
+.list .user-name .more {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.list .user-name image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.list .message-detail .message-cont {
+  margin: 16rpx 0;
+  line-height: 40rpx;
+  font-size: 14px;
+  color: #060f38;
+  word-wrap: break-word;
+}
+
+.list .message-detail .time {
+  font-size: 12px;
+  color: #8b9199;
+}
+
+.set-top {
+  position: absolute;
+  bottom: -76rpx;
+  right: -20rpx;
+  z-index: 30;
+  width: 140rpx;
+  height: 60rpx;
+  background-color: #5f677a;
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #fff;
+  font-size: 14px;
+}
+
+.item-box {
+  position: relative;
+}
+
+.sanjiao_down {
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 10px solid #5f677a;
+  position: absolute;
+  right: 20rpx;
+  top: -10rpx;
+}
+
+.ptn-fixed {
+  position: fixed;
+  bottom: 0;
+  /* padding: 14rpx 0; */
+  z-index: 100;
+  width: 100%;
+  overflow: hidden;
+  background: #FAFAFA;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.06);
+}
+
+.ptn-fixed .pad {
+  padding: 0 32rpx;
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+}
+
+.ptn-fixed input {
+  flex: 1;
+  background: #feffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 72rpx;
+  box-sizing: border-box;
+  padding: 0 10rpx;
+}
+
+.ptn-fixed image {
+  width: 88rpx;
+  height: 88rpx;
+  margin: 0 16rpx;
+}
+
+.ptn-fixed .send {
+  padding: 16rpx 32rpx;
+  border: 1px solid #C2C4C9;
+  border-radius: 8rpx;
+}
+
+.ptn-fixed .active {
+  background:rgb(34, 206, 34);
+  color: #fff;
+  border-style: #fff;
+}
+
+.ptn {
+  height: 100rpx;
+}

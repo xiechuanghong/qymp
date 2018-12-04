@@ -1,0 +1,140 @@
+<!--pages/dynamic/dynamic.wxml-->
+<view class='cont'>
+
+  <!-- 顶部tab切换 -->
+  <!-- <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+    <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">我的</view>
+    <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">公司圈</view>
+  </scroll-view> -->
+
+  <view class='tab-h'>
+    <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">我的</view>
+    <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">公司圈</view>
+  </view>
+
+  <!-- 朋友圈内容 -->
+  <swiper style='height:{{height}}px' current="{{currentTab}}" bindchange="durationChange">
+    <swiper-item wx:for="{{newsData}}" wx:for-index="arr_index" wx:key="">
+      <scroll-view scroll-y bindscrolltolower="onScrolltolower">
+        <block wx:if="{{item.Data.length > 0}}">
+          <view class='item-box'>
+            <view class='item' bindtap='detail' data-id="{{item.ArticleID}}" wx:for="{{item.Data}}" wx:key="" wx:for-index="_index">
+              <image class='user-tx' src='{{item.Avatar}}'></image>
+              <view class='nesw-detail'>
+                <!-- 列表个人信息 -->
+                <view class='user-info'>
+                  <view class='name'>{{item.UserName}}</view>
+                  <view class='post'>{{item.Position}}</view>
+                  <view class='time'>{{item.DateTimeStr}}</view>
+                </view>
+
+                <!-- 用户发布内容 -->
+                <view class='news-cont' style="{{imgArr? 'padding-bottom:0' : '' }}">
+
+                  <block wx:if="{{item.Type==1}}">
+                    <!-- 朋友圈链接跳转 -->
+                    <view class='link'>
+                      <image src='{{item.Cover}}'></image>
+                      <view class='text'>
+                        {{item.Title}}
+                      </view>
+                    </view>
+                  </block>
+
+                  <block wx:if="{{item.Type ==0}}">
+                    <!-- 朋友圈图片形式 -->
+                    <view class='news-img' wx:if="{{item.Content=='' && item.Images.length > 0}}">
+                      <image catchtap="previewImage" data-index="{{arr_index}}" data-id="{{_index}}" data-src="{{items}}" wx:key="" wx:for="{{item.Images}}" wx:for-item="items" wx:if="{{item.Images.length == 1}}" style="width:312rpx;height:312rpx;" src='{{items}}?imageView2/1/w/200/h/200'></image>
+                      <image catchtap="previewImage" data-index="{{arr_index}}" data-id="{{_index}}" data-src="{{items}}" wx:key="" wx:for="{{item.Images}}" wx:for-item="items" wx:if="{{item.Images.length == 2}}" style="width:240rpx;height:240rpx;" src='{{items}}?imageView2/1/w/200/h/200'></image>
+                      <image catchtap="previewImage" data-index="{{arr_index}}" data-id="{{_index}}" data-src="{{items}}" wx:key="" wx:for="{{item.Images}}" wx:for-item="items" wx:if="{{item.Images.length >= 3}}" style="width:176rpx;height:176rpx;" src='{{items}}?imageView2/1/w/200/h/200'></image>
+                    </view>
+
+                    <!-- 朋友圈图文形式 -->
+                    <view class='news-text-img' wx:if="{{item.Content!='' && item.Images.length > 0}}">
+                      <view class="news-text {{ tw ? '' : 'active' }}">
+                        {{item.Content}}
+                      </view>
+                      <view bindtap='whole' class='whole' data-type="{{item.type}}" data-id="{{item.id}}" wx:if="{{item.text.length > 50}}">{{tw ? '收起' : '全文'}}</view>
+                      <view class='news-img'>
+                        <image catchtap="previewImage" data-index="{{arr_index}}" data-id="{{_index}}" data-src="{{items}}" wx:key="" wx:for="{{item.Images}}" wx:for-item="items" wx:if="{{item.Images.length == 1}}" style="width:312rpx;height:312rpx;" src='{{items}}?imageView2/1/w/200/h/200'></image>
+                        <image catchtap="previewImage" data-index="{{arr_index}}" data-id="{{_index}}" data-src="{{items}}" wx:key="" wx:for="{{item.Images}}" wx:for-item="items" wx:if="{{item.Images.length == 2}}" style="width:240rpx;height:240rpx;" src='{{items}}?imageView2/1/w/200/h/200'></image>
+                        <image catchtap="previewImage" data-index="{{arr_index}}" data-id="{{_index}}" data-src="{{items}}" wx:key="" wx:for="{{item.Images}}" wx:for-item="items" wx:if="{{item.Images.length >= 3}}" style="width:176rpx;height:176rpx;" src='{{items}}?imageView2/1/w/200/h/200'></image>
+                      </view>
+                    </view>
+
+                    <!-- 朋友圈文字形式 -->
+                    <block wx:if="{{item.Content!='' && item.Images.length == 0}}">
+                      <!-- <view class="news-text {{item.text.length > 100 ? (sq == item.id ? '' : active) :''}}"> -->
+                      <view class="news-text {{ wz ? '' : 'active' }}">
+                        {{item.Content}}
+                      </view>
+                      <view bindtap='whole' class='whole' data-id="{{item.id}}" wx:if="{{item.text.length > 50}}">{{wz ? '收起' : '全文'}}</view>
+                    </block>
+                  </block>
+
+                </view>
+
+                <!-- 点赞评论分享 -->
+                <view class='type'>
+                  <view class='like {{item.HadLike ? "active" : ""}}' data-id="{{item.ArticleID}}" catchtap='onCollection'>
+                    <image src="{{item.HadLike? '/img/ic_comment_like_orange_pre.png':'/img/ic_comment_like_orange_nor.png' }}"></image>
+                    <text>{{item.LikeCount}}</text>
+                  </view>
+
+                  <!-- <navigator url='/pages/dynamic/detail/detail' hover-class="none"> -->
+                  <view class='message'>
+                    <image src='/img/ic_comment_like_com_nor.png'></image>
+                    <text>{{item.CommentCount}}</text>
+                  </view>
+                  <!-- </navigator> -->
+
+                  <button catchtap open-type='share' data-id="{{item.ArticleID}}" data-index="{{_index}}" hover-class="none">
+                    <view class='repeat'>
+                      <image src='/img/ic_comment_like_share_nor.png'></image>
+                      <text>{{item.ShareCount}}</text>
+                    </view>
+                  </button>
+
+                </view>
+
+                <!-- 点赞人数 -->
+                <!-- <navigator url='/pages/likemember/likemember' wx:if="{{item.LikeUser.length != 0}}" hover-class="none"> -->
+                  <view wx:if="{{item.LikeUser.length != 0}}" class='like-member'>
+                    <image class='good' src='/img/ic_comment_like_gray_line.png'></image>
+                    <!-- <view class='text'>范甘迪,莫佩尔等24人觉得很赞</view> -->
+                    <view class='text'>
+                      <image wx:for="{{item.LikeUser}}" wx:key="" src='{{item}}'></image>
+                      <text wx:if="{{item.LikeCount>6}}">....</text>
+                    </view>
+                    <view class='sanjiao_down'></view>
+                  </view>
+                <!-- </navigator> -->
+
+              </view>
+            </view>
+          </view>
+          <!-- 没有更多了~ -->
+          <view wx:if="{{!item.Page.HasNextPage}}" class='period'>
+            <view class='period-text'>没有更多了</view>
+          </view>
+        </block>
+        <block wx:if="{{item.Data.length == 0}}">
+          <view style='text-align:center'>
+            <image class='not-dynamic-list' mode='widthFix' src='/img/img_placeholder_nodata_news.png'></image>
+          </view>
+        </block>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 右下角咨询 -->
+  <navigator url='/pages/chat/chat' hover-class="none">
+    <view class='float-button'>
+      <view class='float-button-badge'>
+        <!-- <text class='float-button-badge-number'>1</text> -->
+      </view>
+      <image class='float-button-image' mode='aspectFit' src="../../img/ic_floatingactionbutton_contant.png"></image>
+    </view>
+  </navigator>
+
+</view>

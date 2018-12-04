@@ -1,0 +1,37 @@
+<!--pages/chat/chat.wxml-->
+<view class='container' catchtap='hideAll'>
+  <scroll-view bindscrolltoupper="onScrolltoupper" bindscroll="onScroll" class='chat-content-container' scroll-y='true' scroll-into-view='{{lastViewId}}'>
+    <block wx:for="{{ messages }}" wx:key="messages{{ index }}">
+      <bubble id="msg{{ item.id }}" url='{{ item.avatar }}' message='{{ item.message }}' isSend='{{ item.isSend }}' contentType='{{ item.type }}' image='{{ item.image }}' time='{{ item.time }}' text='{{ item.text }}' navigation="{{ item.navigation }}" />
+    </block>
+  </scroll-view>
+  <view class='chat-input-container'>
+    <view class='chat-input-panel'>
+      <input class='chat-input' focus='{{chatInputFocus}}' bindfocus='hideAll' bindinput='input_ChatInput' confirm-type='send' value='{{chatInputValue}}' confirm-hold='true' bindconfirm='sendMessage' />
+      <image class='chat-button-emoji' src='../../img/ic_chat_moj_gray_nor.png' catchtap='tapEmojiShowOrHide' />
+      <!-- <block wx:if='{{chatInputValue.length === 0}}'> -->
+      <image class='chat-button-more' src='../../img/ic_chat_addmore_gray_nor.png' catchtap='tapMoreShowOrHide' />
+      <!-- </block> -->
+      <!-- <block wx:else>
+        <view class='chat-button-send' catchtap='sendMessage'>发送</view>
+      </block> -->
+    </view>
+    <block wx:if='{{showChatInputMore}}'>
+      <view class='chat-input-more'>
+        <image class='chat-input-more-photo' src='../../img/img_chat_sendphoto.png' catchtap='chooseImage' />
+      </view>
+    </block>
+    <block wx:if='{{showChatInputEmoji}}'>
+      <view class='chat-input-emoji-panel'>
+        <view wx:if="{{showEmojis}}" class="emojis_box">
+          <view class="emoji_wrap" wx:for="{{emojiList}}" wx:key="key">
+            <image catchtap="clickEmoji" src="{{item.img}}" data-key="{{item.key}}" class="emoji"></image>
+          </view>
+          <view class="emoji_wrap">
+            <image catchtap='delEmoji' style='width: 64rpx; height: 64rpx;' mode='widthFix' src='/img/ic_emoji_keyboard_deleted.png'></image>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

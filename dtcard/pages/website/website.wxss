@@ -1,0 +1,246 @@
+page {
+  background: #f2f2f2;
+}
+
+swiper {
+  height: 440rpx;
+}
+
+swiper image {
+  width: 100%;
+  height: 100%;
+}
+
+.ptn-rel {
+  position: relative;
+  /* background: #fff; */
+}
+
+.ptn-rel .page {
+  position: absolute;
+  bottom: 16rpx;
+  right: 16rpx;
+  padding: 4rpx 24rpx;
+  background: rgba(0, 0, 0, 0.30);
+  border-radius: 12px;
+  color: #fff;
+}
+
+.website-detail {
+  margin-top: 16rpx;
+  background-color: #fff;
+}
+
+.website-detail .title {
+  height: 98rpx;
+  padding-left: 56rpx;
+  position: relative;
+  font-family: PingFangSC-Medium;
+  font-size: 18px;
+  color: #060f38;
+}
+
+.website-detail .title text {
+  margin-top: 16rpx;
+  display: inline-block;
+}
+
+.website-detail .title::after {
+  content: '';
+  position: absolute;
+  width: 8rpx;
+  height: 40rpx;
+  background-color: #060f38;
+  top: 22rpx;
+  left: 32rpx;
+}
+
+.website-detail .text-suggest {
+  padding: 0 48rpx 32rpx;
+}
+
+.website-detail .text-suggest text {
+  color: #060f38;
+}
+
+.website-detail .img-suggest image {
+  width: 100%;
+}
+
+.website-detail .lead {
+  padding: 0 32rpx 12rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.website-detail .lead .item {
+  width: 334rpx;
+  height: 574rpx;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  margin-bottom: 18rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.website-detail .lead .item image {
+  width: 100%;
+  height: 296rpx;
+}
+
+.website-detail .lead .item .lead-detail {
+  flex: 1;
+  padding: 16rpx 8rpx 20rpx 16rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.website-detail .lead-detail .name {
+  font-size: 14px;
+  color: #060f38;
+  line-height: 40rpx;
+}
+
+.website-detail .lead-detail .job {
+  font-size: 12px;
+  color: #060f38;
+  margin-bottom: 4rpx;
+  line-height: 34rpx;
+}
+
+.website-detail .lead-detail .line {
+  height: 1px;
+  width: 148rpx;
+  background: #d8d8d8;
+  margin-bottom: 16rpx;
+}
+
+.website-detail .lead-detail .lead-suggest {
+  width: 100%;
+  height: 134rpx;
+}
+
+.website-detail .lead-suggest text {
+  font-size: 12px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.website-detail .client {
+  padding: 0 32rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.website-detail .client .item {
+  width: 208rpx;
+  height: 112rpx;
+  margin-bottom: 30rpx;
+  background: #ebebeb;
+}
+
+.website-detail .client image {
+  width: 100%;
+  height: 100%;
+}
+
+.website-detail .contact {
+  padding: 0 32rpx 0 48rpx;
+}
+
+.website-detail .contact .item {
+  width: 100%;
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.website-detail .active {
+  padding: 0 48rpx 32rpx 48rpx;
+}
+
+.contact .item .left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: #060f38;
+  overflow: hidden;
+}
+
+.contact .item .left image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 8rpx;
+}
+
+.contact .item .left .col {
+  flex: 1;
+  color: #8b9199;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact .item .right {
+  width: 112rpx;
+  height: 64rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #0084ff;
+  border-radius: 8rpx;
+  border: 1px solid #0084ff;
+}
+
+ .auto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+ .auto button {
+  width: 484rpx;
+  height: 80rpx;
+  margin: 32rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0084ff;
+  border-radius: 8rpx;
+  color: #fff;
+  font-size: 16px;
+}
+
+.bottom-logo {
+  text-align: center;
+}
+
+.bottom-logo image {
+  width: 216rpx;
+  height: 90rpx;
+  margin-top: 32rpx;
+  margin-bottom: 46rpx;
+}
+
+.not-websiteData {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+}
+
+.not-websiteData image {
+  width: 172rpx;
+}

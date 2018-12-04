@@ -1,0 +1,48 @@
+<view class="search" bindtap='onChoice'>
+  <input placeholder="搜索员工名片" disabled="disabled" />
+  <image class='se' src='/img/ic_search_gray_m.png'></image>
+</view>
+<view class='cont'>
+  <view class="cont-text">员工名片列表 ( {{cardList.Page.TotalItemCount}} )</view>
+  <view class='card-list'>
+
+    <view class='item-box' wx:for="{{cardList.Data}}" wx:key="">
+      <view class="item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" data-id="{{item.CardID}}" catchtap='onCardDetail'>
+        <view class='box'>
+          <image class='user-img' src="{{item.Avatar}}"></image>
+          <view class='user-info'>
+            <view class='user-name'>
+              <view class=''>
+                {{item.Name}}
+                <text>{{item.Position}}</text>
+              </view>
+              <image src="{{item.Logo}}"></image>
+            </view>
+            <view class='tel'>
+              <image src='/img/ic_phone_line_black_m.png'></image>
+              <text>{{item.Mobile}}</text>
+            </view>
+            <view class='email'>
+              <image src='/img/ic_email_line_black_m.png'></image>
+              <text>{{item.Email}}</text>
+              <view class='more' wx:if="{{!item.IsTop}}" data-index="{{index}}" catchtap='onSetTop'>
+                <image src='/img/ic_more_bggray_m.png'></image>
+              </view>
+            </view>
+            <image wx:if="{{item.IsTop}}" class='firstCard' src='/img/img_cardlist_topmark.png'></image>
+          </view>
+
+        </view>
+        <view class='del {{item.IsTop ? "delBgd":""}}' catchtap="onFirstCard" data-index="{{index}}" data-id="{{item.CardID}}">{{item.IsTop ? '取消置顶':'置顶'}}</view>
+      </view>
+      <view class='set-top animated zoomIn' catchtap="onFirstCard" data-index="{{index}}" data-id="{{item.CardID}}" wx:if="{{item.more}}">置 顶
+        <view class='sanjiao_down'></view>
+      </view>
+    </view>
+
+  </view>
+</view>
+<!-- 没有更多了~ -->
+<view wx:if="{{!cardList.Page.HasNextPage}}" class='period'>
+  <view class='period-text'>没有更多了</view>
+</view>

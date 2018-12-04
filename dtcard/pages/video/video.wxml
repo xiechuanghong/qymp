@@ -1,0 +1,2 @@
+<!--pages/video/video.wxml-->
+<video class='video' autoplay="true" poster="{{thumbnail}}" src='{{ videoUrl }}'></video>

@@ -1,0 +1,100 @@
+<!--components/bubble /bubble.wxml-->
+<view>
+  <view class='send-time-container'>
+    <view class='send-time'>
+      <text class='send-time-text'>{{ time }}</text>
+    </view>
+  </view>
+  <view id="{{ id }}" class="bubble-container" wx:if="{{ !isSend }}">
+    <block wx:if="{{ contentType === 'TIMTextElem' }}">
+      <view class="icon">
+        <view class="caret-left"></view>
+        <view class="photo">
+          <image src="{{ url }}" style="width:64rpx;height:64rpx;"></image>
+        </view>
+      </view>
+      <view class="content">
+        <text>{{ text }}</text>
+        <!-- <block wx:for='{{message}}' wx:key=''>
+              <text wx:if="{{ item.contentType === 'text' }}">{{ item.msgCont }}</text>
+              <image wx:if="{{ item.contentType === 'emoji' }}" class='emoji' src='{{item.msgImage}}'></image>
+          </block> -->
+      </view>
+    </block>
+    <block wx:else>
+      <view class="icon">
+        <view class="caret-left"></view>
+        <view class="photo">
+          <image src="{{ url }}" style="width:64rpx;height:64rpx;"></image>
+        </view>
+      </view>
+      <view class="navigation-content">
+        <text class='welcome'>{{ message }}</text>
+        <text class='navigation-intro'>通过我的名片你还可以:</text>
+        <view class='jumps'>
+          <view class='jump' catchtap='onNavigateToCardDetail'>
+            <view class='jump-intro'>
+              <image class='jump-image' src='/img/img_chat_mybusinesscard_24.png'></image>
+              <text class='jump-intro-text'>进入我的名片</text>
+            </view>
+            <image class='jump-right-icon' src='/img/ic_list_arrow_right_gray.png'></image>
+          </view>
+          <view class='jump' catchtap='onNavigateToWebsite'>
+            <view class='jump-intro'>
+              <image class='jump-image' src='/img/img_chat_ourcompany_24.png'></image>
+              <text class='jump-intro-text'>查看我们公司官网</text>
+            </view>
+            <image class='jump-right-icon' src='/img/ic_list_arrow_right_gray.png'></image>
+          </view>
+          <view class='jump' catchtap='onNavigateToShop'>
+            <view class='jump-intro'>
+              <image class='jump-image' src='/img/img_chat_ourproduct_24.png'></image>
+              <text class='jump-intro-text'>查看我们公司商品</text>
+            </view>
+            <image class='jump-right-icon' src='/img/ic_list_arrow_right_gray.png'></image>
+          </view>
+          <view class='jump' catchtap='onNavigateToDynamic'>
+            <view class='jump-intro'>
+              <image class='jump-image' src='/img/img_chat_mynews_24.png'></image>
+              <text class='jump-intro-text'>查看我的动态</text>
+            </view>
+            <image class='jump-right-icon' src='/img/ic_list_arrow_right_gray.png'></image>
+          </view>
+          <view class='jump' data-phone="13433625465" catchtap='onPhone'>
+            <view class='jump-intro'>
+              <image class='jump-image' src='/img/img_chat_myphone_24.png'></image>
+              <text class='jump-intro-text'>拨打我的电话</text>
+            </view>
+            <image class='jump-right-icon' src='/img/ic_list_arrow_right_gray.png'></image>
+          </view>
+          <view class='jump'>
+            <view class='jump-intro'>
+              <image class='jump-image' src='/img/img_chat_mywechat_24.png'></image>
+              <text class='jump-intro-text'>添加我的微信</text>
+            </view>
+            <image class='jump-right-icon' src='/img/ic_list_arrow_right_gray.png'></image>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view id="{{ id }}" class="container-right" wx:if="{{ isSend }}">
+    <block wx:if="{{ contentType === 'TIMTextElem' }}">
+      <view class="content-right">
+        <text>{{ text }}</text>
+        <!-- <block wx:for='{{message}}' wx:key=''>
+            <text wx:if="{{ item.msgType === 'text' }}">{{ item.msgCont }}</text>
+            <image wx:if="{{ item.msgType === 'emoji' }}" class='emoji' src='{{item.msgImage}}'></image>
+          </block> -->
+      </view>
+      <view class="icon-right">
+        <view class="photo">
+          <image src="{{ url }}" style="width:64rpx;height:64rpx;"></image>
+        </view>
+        <view class="caret-right"></view>
+      </view>
+    </block>
+  </view>
+
+</view>

@@ -1,0 +1,246 @@
+.getuser {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.getuser button {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 2.55555556;
+  border-radius: 5px;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  color: #000;
+  background-color: #f8f8f8;
+}
+
+.search {
+  padding: 0 32rpx;
+  margin: 20rpx 0 48rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search input {
+  border-radius: 32rpx;
+  text-align: center;
+  height: 64rpx;
+  background-color: #f3f4f6;
+  width: 100%;
+}
+
+.search image {
+  width: 34rpx;
+  height: 34rpx;
+  position: absolute;
+  left: 254rpx;
+  z-index: 10;
+}
+
+.cont {
+  padding: 0 16rpx;
+  margin-top: 132rpx;
+}
+
+.cont .cont-text {
+  color: #999;
+  margin-bottom: 16rpx;
+}
+
+.cont .item {
+  background-color: #fff;
+  display: flex;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 32rpx;
+  border-radius: 8rpx;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.cont .item .user-img {
+  width: 200rpx;
+  height: 200rpx;
+  margin-top: 24rpx;
+  margin-left: 24rpx;
+}
+
+.cont .item .user-info {
+  flex: 1;
+  padding: 24rpx 16rpx 16rpx 16rpx;
+  position: relative;
+}
+
+.cont .user-info text {
+  color: #060f38;
+}
+
+.cont .user-name {
+  font-family: PingFangSC-Medium;
+  display: flex;
+  font-size: 20px;
+  line-height: 28px;
+  color: #2c364c;
+  align-items: center;
+  margin-bottom: 56rpx;
+  justify-content: space-between;
+}
+
+.cont .user-name image {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.cont .user-name text {
+  font-size: 14px;
+  color: #060f38;
+  font-family: PingFangSC-Regular;
+}
+
+.cont .email {
+  position: relative;
+  /* margin-top: 10rpx; */
+}
+
+.cont .tel image, .email image {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 16rpx;
+  line-height: 48rpx;
+}
+
+.cont .tel text, .cont .email text {
+  color: #8b9199;
+}
+
+.cont .more {
+  position: absolute;
+  bottom: 0rpx;
+  right: 0rpx;
+}
+
+.cont .box {
+  display: flex;
+  width: 100%;
+  /* padding: 10px; *//* line-height: 22px; *//* margin-right: 0; */
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  margin-left: -90px;
+}
+
+.touch-move-active .box, .touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.del {
+  font-size: 16px;
+  background-color: #0084ff;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  border-top-right-radius: 16rpx;
+  border-bottom-right-radius: 16rpx;
+}
+
+input {
+  background: #f3f4f6;
+  border-radius: 32px;
+  height: 64rpx;
+  padding-left: 72rpx;
+  flex: 1;
+}
+
+.fl text {
+  margin-left: 32rpx;
+}
+
+.fl {
+  /* display: flex;
+  padding: 0 32rpx;
+  align-items: center;
+  margin: 20rpx 0 48rpx; */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background: #FFFFFF;
+}
+
+.ptn-rel {
+  display: flex;
+  padding: 0 32rpx;
+  align-items: center;
+  /* position: relative; */
+  margin: 20rpx 0 20rpx;
+  /* width: 100%; */
+}
+
+.se {
+  width: 34rpx;
+  height: 34rpx;
+  position: absolute;
+  left: 62rpx;
+}
+
+.set-top {
+  position: absolute;
+  bottom: -40rpx;
+  right: 0;
+  z-index: 30;
+  width: 140rpx;
+  height: 60rpx;
+  background-color: #5f677a;
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #fff;
+  font-size: 14px;
+}
+
+.item-box {
+  position: relative;
+}
+
+.sanjiao_down {
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 10px solid #5f677a;
+  position: absolute;
+  right: 30rpx;
+  top: -10rpx;
+}
+
+.period {
+  background-color: #fff;
+}
+
+/* 搜索列表样式 */
+
+.no-img {
+  width: 192rpx;
+}

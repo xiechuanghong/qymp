@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/test1/test1",
+    "pages/test2/test2",
+    "pages/chat/chat",
+    "pages/cardlist/cardlist",
+    "pages/message/message",
+    "pages/dynamic/detail/detail",
+    "pages/dynamic/dynamic",
+    "pages/cardlist/search/search",
+    "pages/shop/shop",
+    "pages/shop/search/search",
+    "pages/website/website",
+    "pages/carddetail/carddetail",
+    "pages/video/video",
+    "pages/index/index",
+    "pages/test/test",
+    "pages/logs/logs",
+    "pages/likemember/likemember",
+    "pages/shopDetail/shopDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7F8389",
+    "selectedColor": "#0084FF",
+    "borderStyle": "black",
+    "backgroundColor":"#fff",
+    "list": [
+      {
+        "selectedIconPath": "/img/tab/ic_tab_00_pre.png",
+        "iconPath": "/img/tab/ic_tab_00_nor.png",
+        "pagePath": "pages/carddetail/carddetail",
+        "text": "名片"
+      },
+      {
+        "selectedIconPath": "/img/tab/ic_tab_01_pre.png",
+        "iconPath": "/img/tab/ic_tab_01_nor.png",
+        "pagePath": "pages/shop/shop",
+        "text": "商城"
+      },
+      {
+        "selectedIconPath": "/img/tab/ic_tab_02_pre.png",
+        "iconPath": "/img/tab/ic_tab_02_nor.png",
+        "pagePath": "pages/dynamic/dynamic",
+        "text": "动态"
+      },
+      {
+        "selectedIconPath": "/img/tab/ic_tab_03_pre.png",
+        "iconPath": "/img/tab/ic_tab_03_nor.png",
+        "pagePath": "pages/website/website",
+        "text": "网站"
+      }
+    ]
+  }
+}

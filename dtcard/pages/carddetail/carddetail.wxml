@@ -1,0 +1,249 @@
+<!--pages/carddetail/carddetail.wxml-->
+<view class='container'>
+  <view class='card'>
+    <view class='relative'>
+      <swiper class='card-swiper' bindchange='swiperBindchange' style='height: 622rpx;'>
+        <block wx:for="{{cardDetail.Avatar}}" wx:key=''>
+          <swiper-item>
+            <image src="{{item}}" class="card-slide-image" mode='scaleToFill' style='height: 622rpx;'/>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class='card-slide-image-index'>
+        <text class='image-count-index'>{{swiperCurrent}}</text>
+        <text class='image-count-interval'>/</text>
+        <text class='image-count-total'>{{cardDetail.Avatar.length}}</text>
+      </view>
+    </view>
+    <view class='card-info'>
+      <text wx:if="{{cardDetail.Name}}" class='.card-info-name'>{{cardDetail.Name}}</text>
+      <text wx:if="{{cardDetail.Position}}" class='.card-info-title'>{{cardDetail.Position}}</text>
+      <text wx:if="{{cardDetail.Remark}}" class='card-info-signature'>{{cardDetail.Remark}}</text>
+    </view>
+    <view class='card-operating'>
+      <view class='card-operating-button' bindtap='onCollection'>
+        <image class='card-operating-image' src="{{cardDetail.HadLike? '/img/ic_home_like_pre.png':'/img/ic_home_like_nor.png'}}"></image>
+        <text>靠谱 {{cardDetail.LikeCount == 0 ? '': cardDetail.LikeCount}}</text>
+        <!-- <text>{{cardDetail.LikeCount == 0 ? '': cardDetail.LikeCount}}</text> -->
+      </view>
+      <view class='card-operating-button'>
+        <button open-type='share' hover-class='none' class='card-operating-button'>
+          <image class='card-operating-image' src='/img/ic_home_sharebusinesscard.png'></image>
+        </button>
+        <text>转发名片</text>
+      </view>
+      <view class='card-operating-button' bindtap='generateposter'>
+        <image class='card-operating-image' src='/img/ic_home_generateposter.png'></image>
+        <text class='card-operating-text'>生成海报</text>
+      </view>
+    </view>
+
+    <view class='card-bottom-container'>
+      <view class='card-popularity-list'>
+        <block wx:for="{{cardDetail.Viewers}}" wx:for-index="index" wx:key=''>
+            <image src="{{item}}" class=".card-popularity-list-image" />
+        </block>
+        <image wx:if="{{cardDetail.Viewers.length >= 6}}" src="../../img/img_more_gray_m.png" class=".card-popularity-more" mode='aspectFit' />
+      </view>
+      <image class='card-logo' src="{{cardDetail.Logo}}"></image>
+    </view>
+
+    <view class='card-bottom-container' style='margin-top: 12rpx; margin-left: 32rpx; margin-right: 32rpx; margin-bottom: 32rpx'>
+      <text class='card-bottom-text'>最近{{cardDetail.ViewCount}}人浏览</text>
+      <text class='card-bottom-text'>{{cardDetail.EnterpriseName}}</text>
+    </view>
+  </view>
+  <view class='detail'>
+    <view class='detail-title'>
+      <view class='detail-title-line'></view>
+      <text class='detail-title-text'>个人信息</text>
+    </view>
+    <view class='showinfo-container' wx:if="{{cardDetail.Mobile}}">
+      <image class='showinfo-icon' src='../../img/ic_phone_line_black_m.png'></image>
+      <text class='showinfo-label'>手机： </text>
+      <text class='showinfo-content'>{{cardDetail.Mobile}}</text>
+      <view style='flex: 1'></view>
+      <view class='showinfo-button' bindtap='tapPhoneCall' data-phoneID="80" data-phone="{{cardDetail.Mobile}}">
+        <text class='showinfo-button-text' bindtap=''>呼叫</text>
+      </view>
+    </view>
+    <view class='showinfo-bottom-line' wx:if="{{cardDetail.Mobile}}"></view>
+    <view class='showinfo-container' wx:if="{{cardDetail.Email}}">
+      <image class='showinfo-icon' src='../../img/ic_email_line_black_m.png'></image>
+      <text class='showinfo-label'>邮箱： </text>
+      <text class='showinfo-content'>{{cardDetail.Email}}</text>
+      <view style='flex: 1'></view>
+      <view class='showinfo-button' data-id="1" bindtap='onContentCopyEmail' data-copy='{{cardDetail.Email}}'>
+        <text class='showinfo-button-text'>复制</text>
+      </view>
+    </view>
+    <view class='showinfo-bottom-line' wx:if="{{cardDetail.Email}}"></view>
+    <view class='showinfo-container' wx:if="{{cardDetail.WeChatCode}}">
+      <image class='showinfo-icon' src='../../img/ic_wechat_line_black_m.png'></image>
+      <text class='showinfo-label'>微信： </text>
+      <text class='showinfo-content'>{{cardDetail.WeChatCode}}</text>
+      <!-- <button class='showinfo-button'>添加</button> -->
+      <view style='flex: 1'></view>
+      <view class='showinfo-button' data-copy="{{cardDetail.WeChatCode}}" bindtap='onContentCopyWeChat'>
+        <text class='showinfo-button-text'>复制</text>
+      </view>
+    </view>
+    <view class='showinfo-bottom-line' wx:if="{{cardDetail.WeChatCode}}"></view>
+    <view class='showinfo-container' wx:if="{{cardDetail.Phone}}">
+      <image class='showinfo-icon' src='../../img/ic_telephone_line_black_m.png'></image>
+      <text class='showinfo-label'>座机： </text>
+      <text class='showinfo-content'>{{cardDetail.Phone}}</text>
+      <view style='flex: 1'></view>
+      <view class='showinfo-button' bindtap='tapPhoneCall' data-phone="{{cardDetail.Phone}}">
+        <text class='showinfo-button-text'>呼叫</text>
+      </view>
+    </view>
+    <view class='showinfo-bottom-line' wx:if="{{cardDetail.Phone}}"></view>
+    <view class='showinfo-container' wx:if="{{cardDetail.EnterpriseName}}">
+      <image class='showinfo-icon' src='../../img/ic_company_line_black_m.png'></image>
+      <text class='showinfo-label'>公司： </text>
+      <text class='showinfo-content'>{{cardDetail.EnterpriseName}}</text>
+      <view style='flex: 1'></view>
+      <view class='showinfo-button' data-id="2" bindtap='onContentCopyFirmName' data-copy='{{cardDetail.EnterpriseName}}'>
+        <text class='showinfo-button-text'>复制</text>
+      </view>
+    </view>
+    <view class='showinfo-bottom-line' wx:if="{{cardDetail.EnterpriseName}}"></view>
+    <view class='showinfo-container' wx:if="{{cardDetail.Address}}">
+      <image class='showinfo-icon' src='../../img/ic_location_line_black_m.png'></image>
+      <text class='showinfo-label'>地址： </text>
+      <text class='showinfo-content'>{{cardDetail.Address}}</text>
+      <view style='flex: 1'></view>
+      <view class='showinfo-button' bindtap='tapMapNavigation' data-address='{{cardDetail.Address}}'>
+        <text class='showinfo-button-text'>导航</text>
+      </view>
+    </view>
+    <view class='showinfo-bottom-line' wx:if="{{cardDetail.Address}}"></view>
+    <view class='detail-button-container'>
+      <button class='detail-button' bindtap='tapAddPhoneContact'>存入手机通讯录</button>
+    </view>
+    <view class='showinfo-bottom-line'></view>
+  </view>
+  <!--  -->
+  <view class='detail'  wx:if="{{cardDetail.Info || cardDetail.Voice }}">
+    <view class='detail-title'>
+      <view class='detail-title-line'></view>
+      <text class='detail-title-text'>个人简介</text>
+    </view>
+    <text class='intro'>{{cardDetail.Info}}</text>
+    <view class='voice-intro' wx:if="{{cardDetail.Voice}}">
+      <image class='voice-intro-icon' mode='aspectFit' src='{{voiceIntroIcon}}' bindtap='onPlayStop'></image>
+      <view class='voice-intro-progress'>
+        <text class='voice-intro-progress-text'>我的语音介绍</text>
+        <view class='progress-container'>
+          <view class='progress-box'>
+            <canvas id='progress-bg' class='progress-bg' canvas-id='canvasProgressbg'/>
+            <canvas id='my-progress' class='progress' canvas-id="canvasProgress"/>
+            <canvas id='progress-point' class='progress-point' canvas-id='canvasProgressPoint'/>
+          </view>
+        </view>
+        <view class='voice-intro-progress-time-text'>
+          <text class='voice-intro-progress-start-time'>{{currentTime}}</text>
+          <text class='voice-intro-progress-end-time'>{{duration}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--  -->
+  <view class='detail' wx:if="{{cardDetail.CardTabs.length != 0}}">
+    <view class='detail-title'>
+      <view class='detail-title-line'></view>
+      <text class='detail-title-text'>我的标签</text>
+    </view>
+    <view class='label-container'>
+      <block wx:for='{{ cardDetail.CardTabs }}' wx:key=''>
+        <view wx:if="{{item.Style == 0}}" class='label' data-index="{{index}}" data-id="{{item.TabID}}" bindtap='add' style="background: #FFFAF9;border:1px solid #FFDFD6;">
+          <text class='label-content'>{{ item.Name }}</text>
+          <view class='animation-number'>
+            <text class='label-number'>{{ item.Count }}</text>
+            <view class="add {{tabId == item.TabID?move:''}}">+1</view>
+          </view>
+        </view>
+        <view wx:if="{{item.Style == 1}}" class='label' data-index="{{index}}" data-id="{{item.TabID}}" bindtap='add' style="background: #F9FFFC;border:1px solid #BEE9D7;">
+          <text class='label-content'>{{ item.Name }}</text>
+          <view class='animation-number'>
+            <text class='label-number'>{{ item.Count }}</text>
+            <view class="add {{tabId == item.TabID?move:''}}">+1</view>
+          </view>
+        </view>
+        <view wx:if="{{item.Style == 2}}" class='label' data-index="{{index}}" data-id="{{item.TabID}}" bindtap='add' style="background: #F9FFFF;border:1px solid #D6E2FF;">
+          <text class='label-content'>{{ item.Name }}</text>
+          <view class='animation-number'>
+            <text class='label-number'>{{ item.Count }}</text>
+            <view class="add {{tabId == item.TabID?move:''}}">+1</view>
+          </view>
+        </view>
+        <view wx:if="{{item.Style == 3}}" class='label' data-index="{{index}}" data-id="{{item.TabID}}" bindtap='add' style="background: #FCF9FF;border:1px solid #EAD6FF;">
+          <text class='label-content'>{{ item.Name }}</text>
+          <view class='animation-number'>
+            <text class='label-number'>{{ item.Count }}</text>
+            <view class="add {{tabId == item.TabID ? move:''}}">+1</view>
+          </view>
+        </view>
+
+      </block>
+    </view>
+  </view>
+  <!--  -->
+  <view class='detail' wx:if="{{cardDetail.Video}}">
+    <view class='detail-title'>
+      <view class='detail-title-line'></view>
+      <text class='detail-title-text'>我的视频</text>
+    </view>
+    <view class='video-container'>
+      <!-- <video class='video' src='{{videoUrl}}'></video> -->
+      <view class='video' data-thumbnail="{{cardDetail.VideoThumbnail}}" data-src="{{cardDetail.Video}}" bindtap='openVideoPage'>
+        <image class='video-background' mode='' src='{{cardDetail.VideoThumbnail}}'></image>
+        <view class='video-mask'></view>
+        <image class='video-play-button' src='/img/ic_playvideo_white_b.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='detail' wx:if="{{cardDetail.Images}}">
+    <view class='detail-title'>
+      <view class='detail-title-line'></view>
+      <text class='detail-title-text'>我的照片</text>
+    </view>
+    <view class='images'>
+      <block wx:for='{{cardDetail.Images}}' wx:index='index' wx:key=''>
+        <block wx:if='{{index === 0}}'>
+          <image mode='widthFix' style='width: 100%; margin-top: 32rpx;' src='{{item}}'></image>
+        </block>
+        <block wx:else>
+          <image mode='widthFix' style='width: 100%;' src='{{item}}'></image>
+        </block>
+      </block>
+    </view>
+  </view>
+  <view class='bottom-logo'>
+    <image class='bottom_signature' src='../../img/img_bottom_signature.png'></image>
+  </view>
+
+  <image class='float-cardlist-button' src='/img/img_list_business_home.png' bindtap='openCardListPage'></image>
+
+  <image wx:if='{{ showFloatIntro }}' class='float-intro' src='/img/img_bg_home_tip.png'></image>
+
+  <view class='float-button' bindtap='openChatPage'>
+    <view class='float-button-badge'>
+      <!-- <text class='float-button-badge-number'>{{cardDetail.NoReadCount || ''}}</text> -->
+    </view>
+    <image class='float-button-image' mode='aspectFit' src="../../img/ic_floatingactionbutton_contant.png"></image>
+  </view>
+</view>
+
+<view class='mask-box' catchtouchmove='true' wx:if="{{openMask}}">
+  <view class='mask'></view>
+  <view class='mask-cont'>
+    <view class='canvas-img'>
+      <image src='{{cardDetail.Poster}}' style='width:622rpx;height:1000rpx;border-radius:8rpx;'></image>
+      <image class='close' bindtap='onClosePoster' src='/img/ic_closed_oval_gray.png'></image>
+    </view>
+    <view class='conserve' bindtap='poster' style='text-align:center;'>保存海报</view>
+  </view>
+</view>
+<canvas style="width: 311px;height: 500px;position:fixed;top:99999rpx;" canvas-id="mycanvas" />

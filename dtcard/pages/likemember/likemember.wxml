@@ -1,0 +1,10 @@
+<!--pages/likemember/likemember.wxml-->
+<view class='cont'>
+  <view class='all'>533人评论</view>
+  <view class='list'>
+    <view class='item' wx:for="{{list}}" wx:key="">
+      <image src='{{item.img}}'></image>
+      <view class='text'>{{item.text}}</view>
+    </view>
+  </view>
+</view>

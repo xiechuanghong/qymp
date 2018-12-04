@@ -1,0 +1,32 @@
+<!--pages/shop/search/search.wxml-->
+<view class='ptn-re'>
+  <view class='fl'>
+    <input value='{{flValue}}' placeholder="搜索商品" maxlength="10" bindconfirm="search" confirm-type="search" auto-focus='true' />
+    <image bindtap='search' class='se' src='/img/ic_search_gray_m.png'></image>
+    <text bindtap='cancel'>取消</text>
+  </view>
+  <view class="item-box {{resultArr.length == 0 ?'':'clear-top'}}">
+    <view class='item' wx:for="{{resultArr}}" wx:key="" data-id="{{item.ID}}" bindtap='goodsDetail'>
+      <image class='goods-img' src='{{item.Image}}'></image>
+      <view class='goods-detail'>
+        <text class='depict'>{{item.Name}}</text>
+        <view class='add-goods'>
+          <view class='price'>
+            <text>￥</text>{{item.Price}}
+          </view>
+          <image src='/img/ic_addshoppingcar_yellow_s.png'></image>
+        </view>
+      </view>
+    </view>
+    <view style='text-align:center;width:100%' wx:if="{{no}}">
+      <image class='no-img' mode="widthFix" src='/img/img_search_nodata.png'></image>
+    </view>
+
+    <view wx:if="{{!isPeriod}}" class='period'>
+      <view class='period-text'>没有更多了</view>
+    </view>
+  </view>
+
+
+
+</view>

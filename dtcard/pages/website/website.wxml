@@ -1,0 +1,95 @@
+<import src="/utils/wxParse/wxParse.wxml" />
+<view class='cont' wx:if="{{websiteData.length>0}}">
+
+  <block wx:for="{{websiteData}}" wx:key="">
+    <view class='ptn-rel' wx:if="{{item.Type == 3}}">
+      <swiper bindchange='onChangeSwiper'>
+        <swiper-item wx:for="{{item.Content}}" wx:key="">
+          <image src='{{item}}'></image>
+        </swiper-item>
+      </swiper>
+      <view class='page'>{{current}}/<text style='font-size:26rpx;font-family:HelveticaNeue-Medium;'>{{item.Content.length}}</text></view>
+    </view>
+
+    <view class='website-detail' wx:if="{{item.Type == 0}}">
+      <view class='title'>
+        <text>{{item.Title}}</text>
+      </view>
+      <view class="{{item.Type == 0 ? 'active' : ''}}">
+        <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+      </view>
+      <!-- <view class='text-suggest'>
+        <text>XXX有限公司是一家集开发、设计、施工于一体的专业从事大型企业。凭借前沿的设计理念和过硬的设计能力，准确把握各个客户的独特需求，在有限空间里打造出了无限创意，为客户创造出超乎期望的价值。“诚信靠前、服务至上”是我们坚守的信条。</text>
+      </view> -->
+    </view>
+
+
+    <view class='website-detail' wx:if="{{item.Type == 1}}">
+      <view class='title'>
+        <text>{{item.Title}}</text>
+      </view>
+      <view class='img-suggest'>
+        <block wx:for="{{item.Content}}" wx:key="">
+          <image mode="widthFix" src='{{item}}'></image>
+        </block>
+      </view>
+    </view>
+
+    <view class='website-detail' wx:if="{{item.Type == 2}}">
+      <view class='title'>
+        <text>{{item.Title}}</text>
+      </view>
+      <view class='contact'>
+        <view class='item'>
+          <view class='left'>
+            <image src='/img/ic_telephone_line_black_m.png'></image>
+            <text>座机：</text>
+            <text class='col'>{{item.Content.Phone}}</text>
+          </view>
+          <view class='right' data-phone="{{item.Content.Phone}}" bindtap='onPhoneCall'>呼叫</view>
+        </view>
+        <view class='item'>
+          <view class='left'>
+            <image src='/img/ic_email_line_black_m.png'></image>
+            <text>邮箱：</text>
+            <text class='col'>{{item.Content.Email}}</text>
+          </view>
+          <view class='right' data-copy="{{item.Content.Email}}" bindtap='onContentCopyEmail'>复制</view>
+        </view>
+        <view class='item'>
+          <view class='left'>
+            <image src='/img/ic_location_line_black_m.png'></image>
+            <text>地址：</text>
+            <text class='col'>{{item.Content.Address.Name}}</text>
+          </view>
+          <view class='right' bindtap='onLocation' data-name="{{item.Content.Address.Name}}" data-lng="{{item.Content.Address.Lng}}" data-lat="{{item.Content.Address.Lat}}">导航</view>
+        </view>
+      </view>
+    </view>
+
+  </block>
+
+  <view class='auto'>
+
+    <button hover-class="none" open-type='share'>分享官网</button>
+
+  </view>
+
+  <view class='bottom-logo'>
+    <image class='bottom_signature' src='/img/img_bottom_signature.png'></image>
+  </view>
+
+  <!-- 右下角咨询 -->
+  <navigator url='/pages/chat/chat' hover-class="none">
+    <view class='float-button'>
+      <view class='float-button-badge'>
+        <!-- <text class='float-button-badge-number'>1</text> -->
+      </view>
+      <image class='float-button-image' mode='aspectFit' src="../../img/ic_floatingactionbutton_contant.png"></image>
+    </view>
+  </navigator>
+
+</view>
+<view class='not-websiteData' wx:if="{{websiteData.length==0}}">
+  <image mode='widthFix' src='/img/img_placeholder_nodata_web.png'></image>
+</view>
