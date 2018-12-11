@@ -14,6 +14,7 @@ Page({
   data: {
     isShow: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+   
   },
 
   /**
@@ -25,7 +26,13 @@ Page({
     // CardID = options.CardID || 5
     Type = options.Type || this.getUrlPara(decodeURIComponent(options.scene)).Type || 0
     CardID = options.CardID || this.getUrlPara(decodeURIComponent(options.scene)).CardId
-
+    if (options.Type){
+      app.globalData.Source = 1;
+    } else if (this.getUrlPara(decodeURIComponent(options.scene)).Type){
+      app.globalData.Source = 2;
+    } else {
+      app.globalData.Source = 0;
+    }
     console.log(Type, CardID)
     navigateToUrl = [
       '/pages/cardlist/cardlist',

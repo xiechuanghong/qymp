@@ -1,0 +1,9 @@
+/* pages/airadar/airadar.wxss */
+.home {
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  z-index: 99999;
+  right: 30px;
+  top: 100px;
+}

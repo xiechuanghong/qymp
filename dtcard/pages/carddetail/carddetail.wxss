@@ -77,6 +77,15 @@
   position:relative;
 }
 
+ .ai-img {
+  position: fixed;
+  right: 20rpx;
+  top: 80rpx;
+  width: 80rpx;
+  height: 80rpx;
+  z-index: 10;
+}
+
 .card-swiper {
   height: 734rpx;
 }

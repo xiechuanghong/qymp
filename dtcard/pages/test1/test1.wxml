@@ -1,9 +1,10 @@
 <view class='cont'>
-  <image class='log' src='/img/img_default_title.png'></image>
+  <image class='log' mode='widthFix' src='/img/img_bg_login_bodyimage.png'></image>
   <view class='getuser' wx:if="{{isShow}}">
     <button plain='true' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
-      <image mode='widthFix' src='/img/img_default_login.png'></image>
+      <image mode='widthFix' src='/img/img_bg_login_btn.png'></image>
     </button>
     <view wx:else>请升级微信版本</view>
   </view>
+  <image class='gs-logo' src='/img/img_bg_login_logo.png'></image>
 </view>

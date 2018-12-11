@@ -1,11 +1,12 @@
 <!--pages/carddetail/carddetail.wxml-->
 <view class='container'>
+  <image wx:if="{{cardDetail.UserID == UserID}}" class='ai-img' src='/img/img_open_airadar.png' bindtap='onNavAiradar'></image>
   <view class='card'>
     <view class='relative'>
       <swiper class='card-swiper' bindchange='swiperBindchange' style='height: 622rpx;'>
         <block wx:for="{{cardDetail.Avatar}}" wx:key=''>
           <swiper-item>
-            <image src="{{item}}" class="card-slide-image" mode='scaleToFill' style='height: 622rpx;'/>
+            <image src="{{item}}" class="card-slide-image" mode='scaleToFill' style='height: 622rpx;' />
           </swiper-item>
         </block>
       </swiper>
@@ -41,7 +42,7 @@
     <view class='card-bottom-container'>
       <view class='card-popularity-list'>
         <block wx:for="{{cardDetail.Viewers}}" wx:for-index="index" wx:key=''>
-            <image src="{{item}}" class=".card-popularity-list-image" />
+          <image src="{{item}}" class=".card-popularity-list-image" />
         </block>
         <image wx:if="{{cardDetail.Viewers.length >= 6}}" src="../../img/img_more_gray_m.png" class=".card-popularity-more" mode='aspectFit' />
       </view>
@@ -125,7 +126,7 @@
     <view class='showinfo-bottom-line'></view>
   </view>
   <!--  -->
-  <view class='detail'  wx:if="{{cardDetail.Info || cardDetail.Voice }}">
+  <view class='detail' wx:if="{{cardDetail.Info || cardDetail.Voice }}">
     <view class='detail-title'>
       <view class='detail-title-line'></view>
       <text class='detail-title-text'>个人简介</text>
@@ -137,9 +138,9 @@
         <text class='voice-intro-progress-text'>我的语音介绍</text>
         <view class='progress-container'>
           <view class='progress-box'>
-            <canvas id='progress-bg' class='progress-bg' canvas-id='canvasProgressbg'/>
-            <canvas id='my-progress' class='progress' canvas-id="canvasProgress"/>
-            <canvas id='progress-point' class='progress-point' canvas-id='canvasProgressPoint'/>
+            <canvas id='progress-bg' class='progress-bg' canvas-id='canvasProgressbg' />
+            <canvas id='my-progress' class='progress' canvas-id="canvasProgress" />
+            <canvas id='progress-point' class='progress-point' canvas-id='canvasProgressPoint' />
           </view>
         </view>
         <view class='voice-intro-progress-time-text'>

@@ -94,14 +94,15 @@ Page({
     console.log(options, app.globalData)
     CardID = options.CardID || app.globalData.CardID
     app.globalData.CardID = CardID
-    
+
     this.init()
     let systemInfo = wx.getSystemInfoSync();
     this.setData({
       imageHeight: ((systemInfo.screenWidth - 64) * 2),
+      UserID: app.globalData.userInfo.UserID
     })
     this.innerAudioContext = wx.createInnerAudioContext()
-    
+
   },
 
   /**
@@ -204,7 +205,7 @@ Page({
    */
   init() {
     let that = this
-    this.getCardDetail().then((data)=>{
+    this.getCardDetail().then((data) => {
       console.log(data)
       if (data.Voice) {
         that.initProgress()
@@ -696,15 +697,23 @@ Page({
       method: 'GET',
       data: {
         FromUserID: app.globalData.userInfo.UserID,
-        CardID: app.globalData.CardID
+        CardID: app.globalData.CardID,
+        Source: app.globalData.Source||0
       },
       success(res) {
-        if(res.data.State == 'Success') {
+        if (res.data.State == 'Success') {
           app.globalData.from = res.data.Result.From,
-          app.globalData.to = res.data.Result.To
+            app.globalData.to = res.data.Result.To
         }
         console.log(res)
       }
+    })
+  },
+
+  // 跳转到ai雷达
+  onNavAiradar() {
+    wx.redirectTo({
+      url: '/pages/airadar/airadar',
     })
   }
 })

@@ -2,6 +2,12 @@ page {
   background: #f2f2f2;
 }
 
+.cont {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
 swiper {
   height: 440rpx;
 }

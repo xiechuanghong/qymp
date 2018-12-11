@@ -1,0 +1,2 @@
+<!--pages/airadar/airadar.wxml-->
+<web-view src="https://radar.dtoao.com"></web-view>

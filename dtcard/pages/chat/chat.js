@@ -423,6 +423,7 @@ Page({
     let sess, newMsg, selSess
     //获取所有聊天会话
     var sessMap = webim.MsgStore.sessMap();
+
     for (var j in newMsgList) { //遍历新消息
       newMsg = newMsgList[j];
       if (newMsg.getSession().id() == app.globalData.to.UserName) { //为当前聊天对象的消息
@@ -430,7 +431,7 @@ Page({
         //在聊天窗体中新增一条消息
         //console.warn(newMsg);
         // var onemsg = show_one_msg.addMsg(newMsg, to);
-        let model = show_one_msg.convertMsgtoHtml(newMsg, to)
+        let model = show_one_msg.convertMsgtoHtml(newMsg, app.globalData.to)
         model[0].time = moment(model[0].time).format('YYYY-MM-DD HH:mm:ss')
         that.data.messages.push(...model)
         that.setData({

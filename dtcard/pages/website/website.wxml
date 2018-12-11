@@ -23,7 +23,6 @@
       </view> -->
     </view>
 
-
     <view class='website-detail' wx:if="{{item.Type == 1}}">
       <view class='title'>
         <text>{{item.Title}}</text>
